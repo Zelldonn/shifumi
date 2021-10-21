@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">shifumi</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Finaliser l\'inscription</string>
+    <string name="action_sign_in_short">Finaliser</string>
+    <string name="name_hint">Name</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="sign_in">Se connecter</string>
+
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>
