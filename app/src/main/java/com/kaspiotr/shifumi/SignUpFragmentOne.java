@@ -1,4 +1,4 @@
-package com.example.shifumi;
+package com.kaspiotr.shifumi;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -7,14 +7,12 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -24,7 +22,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 

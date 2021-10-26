@@ -2,52 +2,147 @@ package com.kaspiotr.shifumi.games;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.kaspiotr.GameType;
+import com.kaspiotr.Move;
 import com.kaspiotr.shifumi.R;
 
-public class MultiActivity extends AppCompatActivity {
+public abstract class GameActivity extends AppCompatActivity {
 
-    ImageView[] imageView = new ImageView[8];
+    private ImageView[] imageView = new ImageView[8];
 
-    ImageView move_p1, move_p2;
+    private ImageView move_p1, move_p2;
+    protected int p1_score = 0, p2_score = 0, round = 1;
 
-    public enum GameMode{
-        MULTI, SOLO;
+    public static final int ROCK = 0, PAPER = 1, SCISSSORS = 2, HOLE = 3, WATER = 6, AIR = 7, SPONGE = 4, FIRE = 5;
+
+    protected GameType gameType;
+
+    private TextView gameStatus_text_view, round_text_view, p1_text_view, p2_text_view;
+
+
+    protected TextView progressBar;
+
+    public static int calculateNewScore(int score, boolean isWinner, GameType gt){
+        int newScore = score;
+        if(isWinner){
+            if(gt == GameType.Classic){
+                newScore += 3;
+            }else if(gt == GameType.Twist){
+                newScore += 5;
+            }else{
+                newScore += 8;
+            }
+        }else{
+            if(gt == GameType.Classic){
+                newScore -= 1;
+            }else if(gt == GameType.Twist){
+                newScore -= 2;
+            }else{
+                newScore -= 3;
+            }
+        }
+        if(newScore < 0)
+            return 0;
+        else
+            return newScore;
     }
 
-    public static final int ROCK = 0, PAPER = 1, SCISSSORS = 2, HOLE = 3, WATER = 4, AIR = 5, SPONGE = 6, FIRE = 7;
 
-    GameType gameType;
+    private int getImageFromMove(Move move){
+        switch (move){
+            case None: return R.drawable.waiting;
+            case Pierre: return R.drawable.rock;
+            case Feuille: return R.drawable.paper;
+            case Ciseau:return R.drawable.scissors;
+            case Puit:return R.drawable.hole;
+            case Eponge:return R.drawable.sponge;
+            case Feu:return R.drawable.fire;
+            case Eau:return R.drawable.water;
+            case Air:return R.drawable.air;
+        }
+        return R.drawable.waiting;
+    }
 
-    GameMode gameMode;
+    public void setMove_p1(Move move) {
+        move_p1.setBackgroundResource(getImageFromMove(move));
+    }
 
-    String id = "";
+    public void setMove_p2(Move move) {
+        move_p2.setBackgroundResource(getImageFromMove(move));
+    }
 
     private void initComponent(){
+        gameStatus_text_view = findViewById(R.id.game_status_text_view);
+        round_text_view = findViewById(R.id.round_text_view);
+        p1_text_view = findViewById(R.id.you_text);
+        p2_text_view = findViewById(R.id.opponent_text);
+        progressBar = findViewById(R.id.progress_bar);
+
         move_p1 = findViewById(R.id.move_p1);
         move_p2 = findViewById(R.id.move_p2);
         move_p1.setBackgroundResource(R.drawable.waiting);
         move_p2.setBackgroundResource(R.drawable.waiting);
 
         imageView[ROCK] = findViewById(R.id.rock);
-        imageView[FIRE] = findViewById(R.id.fire);
-        imageView[PAPER] = findViewById(R.id.paper);
-        imageView[SCISSSORS] = findViewById(R.id.scissors);
-        imageView[WATER] = findViewById(R.id.water);
-        imageView[HOLE] = findViewById(R.id.hole);
-        imageView[HOLE].setOnClickListener(v ->{
-            move_p1.setBackgroundResource(R.drawable.hole);
+        imageView[ROCK].setOnClickListener(v -> {
+            if(onMove(Move.Pierre))
+                move_p1.setBackgroundResource(R.drawable.rock);
         });
+
+        imageView[FIRE] = findViewById(R.id.fire);
+        imageView[FIRE].setOnClickListener(v -> {
+            if(onMove(Move.Feu))
+                move_p1.setBackgroundResource(R.drawable.fire);
+        });
+        imageView[PAPER] = findViewById(R.id.paper);
+        imageView[PAPER].setOnClickListener(v -> {
+            if(onMove(Move.Feuille))
+                move_p1.setBackgroundResource(R.drawable.paper);
+        });
+
+        imageView[SCISSSORS] = findViewById(R.id.scissors);
+        imageView[SCISSSORS].setOnClickListener(v -> {
+            if(onMove(Move.Ciseau))
+                move_p1.setBackgroundResource(R.drawable.scissors);
+        });
+
+        imageView[WATER] = findViewById(R.id.water);
+        imageView[WATER].setOnClickListener(v -> {
+            if(onMove(Move.Eau))
+                move_p1.setBackgroundResource(R.drawable.water);
+        });
+
+        imageView[HOLE] = findViewById(R.id.hole);
+        imageView[HOLE].setOnClickListener(v -> {
+            if(onMove(Move.Puit))
+                move_p1.setBackgroundResource(R.drawable.hole);
+        });
+
         imageView[SPONGE] = findViewById(R.id.sponge);
+        imageView[SPONGE].setOnClickListener(v -> {
+            if(onMove(Move.Eponge))
+                move_p1.setBackgroundResource(R.drawable.sponge);
+        });
+
         imageView[AIR] = findViewById(R.id.air);
-
-
+        imageView[AIR].setOnClickListener(v -> {
+            if(onMove(Move.Air))
+                move_p1.setBackgroundResource(R.drawable.air);
+        });
     }
+
+    protected abstract boolean onMove(Move move);
 
     private void allInvisible(){
         for(int i = 0; i < 8 ; i++){
@@ -68,16 +163,8 @@ public class MultiActivity extends AppCompatActivity {
         }else if(gameType == GameType.Twist){
             setVisibleTo(HOLE);
         }else{
-            setVisibleTo(FIRE);
+            setVisibleTo(AIR);
             imageView[HOLE].setVisibility(View.INVISIBLE);
-        }
-    }
-
-    private void startGame(){
-        if(id.isEmpty()){
-            // This mean we created the game and we are waiting for a player to join
-        }else{
-
         }
     }
 
@@ -85,22 +172,52 @@ public class MultiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classique);
+
         Bundle extras = getIntent().getExtras();
         if ((extras != null) && (extras.containsKey("GameType"))) {
             gameType = (GameType) extras.getSerializable("GameType");
         }
-        if ((extras != null) && (extras.containsKey("GameMode"))) {
-            gameMode = (GameMode) extras.getSerializable("GameMode");
-        }
-        if ((extras != null) && (extras.containsKey("ID"))) {
-            id = extras.getString("ID");
-        }
-
-/*
-        Log.i("TYPE",gameType + " "+ gameMode + (id.isEmpty() ?"" : " optional id : " + id));
-*/
         initComponent();
         showImage();
-        startGame();
+    }
+
+    public TextView getGameStatus_text_view() {
+        return gameStatus_text_view;
+    }
+
+    public void setGameStatus_text_view(String text) {
+        this.gameStatus_text_view.setText(text);
+    }
+
+    public TextView getRound_text_view() {
+        return round_text_view;
+    }
+
+    public void setRound_text_view(String text) {
+        this.round_text_view.setText(text);
+    }
+
+    public TextView getP1_text_view() {
+        return p1_text_view;
+    }
+
+    public void setP1_text_view(String text) {
+        this.p1_text_view.setText(text);
+    }
+
+    public TextView getP2_text_view() {
+        return p2_text_view;
+    }
+
+    public void setP2_text_view(String text) {
+        this.p2_text_view.setText(text);
+    }
+
+    public TextView getProgressBar() {
+        return progressBar;
+    }
+
+    public void setProgressBar(String text) {
+        progressBar.setText(text);
     }
 }

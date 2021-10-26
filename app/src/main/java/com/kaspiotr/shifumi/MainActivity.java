@@ -1,15 +1,12 @@
-package com.example.shifumi;
+package com.kaspiotr.shifumi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.kaspiotr.Move;
 
 public class MainActivity extends AppCompatActivity {
     Button button_sign_in , button_sign_up ;

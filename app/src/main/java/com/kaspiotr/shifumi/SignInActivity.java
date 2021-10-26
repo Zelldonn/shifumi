@@ -1,4 +1,4 @@
-package com.example.shifumi;
+package com.kaspiotr.shifumi;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +25,7 @@ public class SignInActivity extends AppCompatActivity {
     ImageView back_button;
 
     TextInputEditText email, pswd;
-    String email_, pswd_;
+    String retrieved_email, retrieved_pswd;
 
     private FirebaseAuth mAuth;
 
@@ -37,12 +37,20 @@ public class SignInActivity extends AppCompatActivity {
         initComponent();
     }
     private Boolean readPreferences(){
-        /*SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        email_ = sharedPref.getString("email", "");
-        pswd_ = sharedPref.getString("pswd", "");*/
-        email_ = "stringaripierre@hotmail.fr";
-        pswd_ = "motorolaxtr446";
-        return !email_.isEmpty() && !pswd_.isEmpty();
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        retrieved_email = sharedPref.getString("email", "");
+        retrieved_pswd = sharedPref.getString("pswd", "");
+        return !retrieved_email.isEmpty() && !retrieved_pswd.isEmpty();
+    }
+
+
+
+    private void savePreferences(String e, String p) {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("email", e);
+        editor.putString("pswd", p);
+        editor.apply();
     }
 
     private void initComponent(){
@@ -60,18 +68,17 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         if(readPreferences()){
-            email.setText(email_);
-            pswd.setText(pswd_);
-            signIn(email.getText().toString().trim(), pswd.getText().toString());
+            email.setText(retrieved_email);
+            pswd.setText(retrieved_pswd);
         }
 
-        Log.i("SHARED",email_ +" " + pswd_);
-        email.setText(email_);
-        pswd.setText(pswd_);
+        Log.i("SHARED", retrieved_email +" " + retrieved_pswd);
+        email.setText(retrieved_email);
+        pswd.setText(retrieved_pswd);
     }
 
-    private void signIn(String email, String password){
-        mAuth.signInWithEmailAndPassword(email, password)
+    private void signIn(String email_, String password_){
+        mAuth.signInWithEmailAndPassword(email_, password_)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -79,8 +86,13 @@ public class SignInActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getApplicationContext(), "Authentication success ",
                                     Toast.LENGTH_SHORT).show();
-                            Intent myIntent = new Intent(SignInActivity.this, ShifumiActivity.class);
+                            // Save preferences
+                            savePreferences(email_, password_);
+                            Intent myIntent = new Intent(SignInActivity.this, GameSelectActivity.class);
                             startActivity(myIntent);
+
+                            Log.i("MY USER", mAuth.getCurrentUser().toString());
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("FIREBASE", "createUserWithEmail:failure", task.getException());

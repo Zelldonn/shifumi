@@ -1,4 +1,4 @@
-package com.example.shifumi.adapter;
+package com.kaspiotr.shifumi.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shifumi.R;
+import com.kaspiotr.shifumi.R;
 
 public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.ViewHolder> {
 
