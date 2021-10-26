@@ -87,7 +87,6 @@ public class SignUpFragmentOne extends Fragment implements View.OnClickListener 
                     break;
             }
         });
-        precise_input =  view.findViewById(R.id.other_sex_text_input);
         continue_button = view.findViewById(R.id.continue_button);
         continue_button.setOnClickListener(this);
 

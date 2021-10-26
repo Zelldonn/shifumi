@@ -51,7 +51,8 @@ public class MultiActivity extends GameActivity implements ServerListener {
         if(!gameStarted || !canPlay)
             return false;
 
-        setPlayerIndication(hisName + " choisi un élèment...");
+
+        runOnUiThread(() -> setPlayerIndication(hisName + " choisi un élèment..."));
         canPlay = false;
         serverConnection.sendMove(move);
         lastMove = move;
@@ -120,15 +121,16 @@ public class MultiActivity extends GameActivity implements ServerListener {
         setP2_text_view(playerName);
         hisName = playerName;
 
-        setGameStatus_text_view(playerName + " à rejoint la partie !");
+        setGameStatus_text_view(playerName + " a rejoint la partie !");
         Log.i("DEBUG","player name : "  + playerName);
     }
 
     @Override
     public void onGameStart(ServerConnection connection, GameType type) {
-        Log.i("DEBUG","Game started type : " + type);
+        runOnUiThread(() -> setPlayerIndication("Choississez un élèment"));
+        canPlay = true;
+        //Log.i("DEBUG","Game started type : " + type);
         gameStarted = true;
-        setPlayerIndication("Choississez un élèment");
     }
 
     @Override
@@ -162,10 +164,10 @@ public class MultiActivity extends GameActivity implements ServerListener {
 
     @Override
     public void onRoundStart(ServerConnection connection, long duration) {
+        runOnUiThread(() -> setPlayerIndication("Choississez un élèment"));
         canPlay = true;
         setRound_text_view("Manche " + round);
         setMove_p1(Move.None);
-        setPlayerIndication("Choississez un élèment");
     }
     @Override
     public void onBackPressed() {

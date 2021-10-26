@@ -80,7 +80,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpFragmentO
         surname_input = findViewById(R.id.surname_text_input);
         birthdate_input = findViewById(R.id.birthdate_text_input);
         radioGroup = findViewById(R.id.radio_group);
-        precise_input = findViewById(R.id.other_sex_text_input);
 
         continue_button = findViewById(R.id.continue_button);
 

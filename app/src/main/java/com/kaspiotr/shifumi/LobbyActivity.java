@@ -43,7 +43,7 @@ public class LobbyActivity extends AppCompatActivity implements ServerListener {
 
     private String myName = "", uuid;
 
-    private ActionMenuItemView refresh_button;
+    private ActionMenuItemView refresh_button, leaderboard_button;
 
 
     private void makeToast(String s){
@@ -65,6 +65,8 @@ public class LobbyActivity extends AppCompatActivity implements ServerListener {
             makeToast("Refreshing ");
             this.serverConnection.sendListRequest(gameType);
         });
+        leaderboard_button =findViewById(R.id.leader_board_button);
+        leaderboard_button.setVisibility(View.INVISIBLE);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
