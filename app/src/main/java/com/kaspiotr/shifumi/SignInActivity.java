@@ -77,6 +77,8 @@ public class SignInActivity extends AppCompatActivity {
         pswd.setText(retrieved_pswd);
     }
 
+
+
     private void signIn(String email_, String password_){
         mAuth.signInWithEmailAndPassword(email_, password_)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

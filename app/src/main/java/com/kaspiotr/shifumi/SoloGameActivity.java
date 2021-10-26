@@ -1,9 +1,7 @@
 package com.kaspiotr.shifumi;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +19,6 @@ import com.kaspiotr.FightRule;
 import com.kaspiotr.GameType;
 import com.kaspiotr.Move;
 import com.kaspiotr.MoveMaker;
-import com.kaspiotr.ShifumiGame;
 import com.kaspiotr.shifumi.games.GameActivity;
 
 import java.util.Random;
@@ -91,7 +88,7 @@ public class SoloGameActivity extends GameActivity {
         }
         setGameStatus_text_view("A vous de jouer !");
         setP2_text_view("IA");
-        getProgressBar().setVisibility(View.INVISIBLE);
+        getPlayerIndication().setVisibility(View.INVISIBLE);
     }
 
     private void initClassic(){
