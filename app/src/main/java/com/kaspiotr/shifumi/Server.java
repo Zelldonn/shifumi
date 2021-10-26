@@ -1,4 +1,4 @@
-package com.example.shifumi;
+package com.kaspiotr.shifumi;
 
 public class Server {
     private String id, type;

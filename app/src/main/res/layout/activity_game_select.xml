@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameSelectActivity" >
+    tools:context=".GameSelectActivity"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -20,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:menu="@menu/top_app_bar"
-            app:navigationIcon="@drawable/ic_baseline_menu_24"
+            app:navigationIcon="@drawable/ic_baseline_home_24"
             app:title="@string/app_title">
 
         </com.google.android.material.appbar.MaterialToolbar>
@@ -35,7 +36,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="56dp"
+            android:layout_marginVertical="10dp"
             android:orientation="vertical">
 
             <com.google.android.material.card.MaterialCardView
@@ -251,4 +252,4 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

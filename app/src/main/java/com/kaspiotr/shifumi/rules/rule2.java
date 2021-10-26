@@ -1,4 +1,4 @@
-package com.example.shifumi.rules;
+package com.kaspiotr.shifumi.rules;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.shifumi.R;
+import com.kaspiotr.shifumi.R;
 
 
 public class rule2 extends Fragment {

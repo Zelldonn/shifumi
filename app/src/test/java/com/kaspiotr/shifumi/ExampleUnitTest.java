@@ -1,4 +1,4 @@
-package com.example.shifumi;
+package com.kaspiotr.shifumi;
 
 import org.junit.Test;
 

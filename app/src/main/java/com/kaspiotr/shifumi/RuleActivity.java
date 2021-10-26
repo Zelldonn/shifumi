@@ -1,4 +1,4 @@
-package com.example.shifumi;
+package com.kaspiotr.shifumi;
 
 import androidx.appcompat.app.AppCompatActivity;
 

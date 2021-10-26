@@ -1,10 +1,10 @@
-package com.example.shifumi.games;
+package com.kaspiotr.shifumi.games;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.shifumi.R;
+import com.kaspiotr.shifumi.R;
 
 public class TwistActivity extends AppCompatActivity {
 

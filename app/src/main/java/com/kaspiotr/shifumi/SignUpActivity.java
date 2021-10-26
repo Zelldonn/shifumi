@@ -1,4 +1,4 @@
-package com.example.shifumi;
+package com.kaspiotr.shifumi;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -200,12 +200,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpFragmentO
                     public void onSuccess(Void aVoid) {
                         // We can go to the game
 
-                        // Save preferences
-                        savePreferences();
-
                         Toast.makeText(getApplicationContext(), "Authentication success ",
                                 Toast.LENGTH_SHORT).show();
-                        Intent myIntent = new Intent(SignUpActivity.this, ShifumiActivity.class);
+                        Intent myIntent = new Intent(SignUpActivity.this, GameSelectActivity.class);
                         startActivity(myIntent);
                     }
                 })
@@ -218,13 +215,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpFragmentO
                 });
     }
 
-    private void savePreferences() {
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("email", myUser.getEmail());
-        editor.putString("pswd", myUser.getPassword());
-        editor.apply();
-    }
+
 
     @Override
     public void onFinishClicked(View view, ArrayList<String> args) {
