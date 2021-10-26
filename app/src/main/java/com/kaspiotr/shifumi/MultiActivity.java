@@ -36,20 +36,25 @@ public class MultiActivity extends GameActivity implements ServerListener {
 
     private ServerConnection serverConnection;
 
-    private String id = "", myName = "", hisName = "", uuid ="";
+    private String id = "", myName = "", hisName = "opponent", uuid ="";
 
-    boolean gameStarted = false;
+    boolean gameStarted = false, canPlay = true;
+
+    Move lastMove;
 
     private FirebaseAuth mAuth;
     FirebaseFirestore db;
     FirebaseUser user;
-    CountDownTimer countDownTimer;
 
     @Override
     protected boolean onMove(Move move) {
-        if(!gameStarted)
+        if(!gameStarted || !canPlay)
             return false;
+
+        setPlayerIndication(hisName + " choisi un élèment...");
+        canPlay = false;
         serverConnection.sendMove(move);
+        lastMove = move;
         setMove_p2(Move.None);
         return true;
     }
@@ -106,6 +111,7 @@ public class MultiActivity extends GameActivity implements ServerListener {
     @Override
     public void onGameCreated(ServerConnection connection, String gameID) {
         serverConnection.sendInfo(myName);
+        setGameStatus_text_view("Attendez que quelqu'un rejoigne la partie !");
         Log.i("DEBUG",gameID);
     }
 
@@ -113,6 +119,8 @@ public class MultiActivity extends GameActivity implements ServerListener {
     public void onNewPlayer(ServerConnection connection, String playerName) {
         setP2_text_view(playerName);
         hisName = playerName;
+
+        setGameStatus_text_view(playerName + " à rejoint la partie !");
         Log.i("DEBUG","player name : "  + playerName);
     }
 
@@ -120,7 +128,7 @@ public class MultiActivity extends GameActivity implements ServerListener {
     public void onGameStart(ServerConnection connection, GameType type) {
         Log.i("DEBUG","Game started type : " + type);
         gameStarted = true;
-        setGameStatus_text_view("A vous de jouer !");
+        setPlayerIndication("Choississez un élèment");
     }
 
     @Override
@@ -154,37 +162,35 @@ public class MultiActivity extends GameActivity implements ServerListener {
 
     @Override
     public void onRoundStart(ServerConnection connection, long duration) {
-        //makeToast("Round started with duration : " + duration);
-        progressBar.setText("long");
-        countDownTimer = new CountDownTimer(duration, 1000) {
-            @Override
-            public void onTick(long l) {
-                String sDuration = String.format(Locale.FRANCE, "%d", TimeUnit.MILLISECONDS.toSeconds(l));
-                progressBar.setText(sDuration);
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        };
-        countDownTimer.start();
+        canPlay = true;
         setRound_text_view("Manche " + round);
         setMove_p1(Move.None);
+        setPlayerIndication("Choississez un élèment");
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        try {
+            socket.close();
+            Log.i("SOC CLOSED", "closed");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onRoundEnd(ServerConnection connection, boolean isDraw, String winner, Move othersMove) {
         //makeToast("Round ended, isDraw : " + isDraw + ", winner : "+ winner + "Opponent played : " +othersMove.toString());
         setMove_p2(othersMove);
+
         if(!isDraw){
             if(winner.equals("win")){
                 p1_score++;
-                setGameStatus_text_view("Continuez comme ça !");
+                setGameStatus_text_view("Votre " + lastMove.toString() + " a battu " + othersMove.toString());
             }
             else{
                 p2_score++;
-                setGameStatus_text_view("Vous ferai mieux la prochaine fois !");
+                setGameStatus_text_view("Votre " + lastMove.toString() + " s'est fait battre par " + othersMove.toString());
             }
 
             setP2_text_view(hisName + " " + p2_score);
@@ -215,7 +221,7 @@ public class MultiActivity extends GameActivity implements ServerListener {
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast t = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG);
+                Toast t = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT);
                 t.show();
             }
         });

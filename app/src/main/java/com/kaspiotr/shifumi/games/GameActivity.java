@@ -2,17 +2,11 @@ package com.kaspiotr.shifumi.games;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.material.progressindicator.CircularProgressIndicator;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
 import com.kaspiotr.GameType;
 import com.kaspiotr.Move;
 import com.kaspiotr.shifumi.R;
@@ -31,7 +25,7 @@ public abstract class GameActivity extends AppCompatActivity {
     private TextView gameStatus_text_view, round_text_view, p1_text_view, p2_text_view;
 
 
-    protected TextView progressBar;
+    protected TextView playerIndication;
 
     public static int calculateNewScore(int score, boolean isWinner, GameType gt){
         int newScore = score;
@@ -87,7 +81,7 @@ public abstract class GameActivity extends AppCompatActivity {
         round_text_view = findViewById(R.id.round_text_view);
         p1_text_view = findViewById(R.id.you_text);
         p2_text_view = findViewById(R.id.opponent_text);
-        progressBar = findViewById(R.id.progress_bar);
+        playerIndication = findViewById(R.id.player_indication);
 
         move_p1 = findViewById(R.id.move_p1);
         move_p2 = findViewById(R.id.move_p2);
@@ -213,11 +207,11 @@ public abstract class GameActivity extends AppCompatActivity {
         this.p2_text_view.setText(text);
     }
 
-    public TextView getProgressBar() {
-        return progressBar;
+    public TextView getPlayerIndication() {
+        return playerIndication;
     }
 
-    public void setProgressBar(String text) {
-        progressBar.setText(text);
+    public void setPlayerIndication(String text) {
+        playerIndication.setText(text);
     }
 }

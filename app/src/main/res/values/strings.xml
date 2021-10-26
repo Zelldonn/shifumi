@@ -57,5 +57,5 @@
     <string name="round">Manche 1</string>
 
     <string name="leaderboard_title">Classement général</string>
-
+    <string name="player_indication"></string>
 </resources>
