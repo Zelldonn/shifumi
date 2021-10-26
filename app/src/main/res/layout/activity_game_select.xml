@@ -80,7 +80,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="151dp"
-                        android:background="@color/teal_200"
+                        android:background="@drawable/classic"
                         android:scaleType="centerCrop" />
 
                     <!-- Buttons -->
@@ -104,6 +104,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/action_multi" />
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/borderlessButtonStyle"
+                            android:id="@+id/info_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:icon="@drawable/ic_baseline_help_24"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -150,7 +156,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="151dp"
-                        android:background="@color/teal_200"
+                        android:background="@drawable/twist"
                         android:scaleType="centerCrop" />
 
                     <!-- Buttons -->
@@ -174,6 +180,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/action_multi" />
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/borderlessButtonStyle"
+                            android:id="@+id/info_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:icon="@drawable/ic_baseline_help_24"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -220,7 +232,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="151dp"
-                        android:background="@color/teal_200"
+                        android:background="@drawable/melimelo"
                         android:scaleType="centerCrop" />
 
                     <!-- Buttons -->
@@ -244,6 +256,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/action_multi" />
+                        <com.google.android.material.button.MaterialButton
+                            style="?attr/borderlessButtonStyle"
+                            android:id="@+id/info_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:icon="@drawable/ic_baseline_help_24"/>
                     </LinearLayout>
 
                 </LinearLayout>
