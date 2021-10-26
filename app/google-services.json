@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "130346070559",
+    "project_id": "shifumi-eca6a",
+    "storage_bucket": "shifumi-eca6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130346070559:android:a9c02d0ea0e0225bb7db2a",
+        "android_client_info": {
+          "package_name": "com.example.shifumi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130346070559-e5a3ovtoropfge23t5ocpef414go175r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcvx2fPpM7VS6KKG9icJgXezcMsESB7KU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130346070559-e5a3ovtoropfge23t5ocpef414go175r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

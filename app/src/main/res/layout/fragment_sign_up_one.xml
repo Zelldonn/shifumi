@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".SignUpFragmentOne">
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_name"
+            app:helperText="* requis"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_text_input"
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/surname_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_text_layout"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            app:helperText="* requis"
+            android:hint="@string/hint_surname">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/surname_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/birthdate_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/surname_text_layout"
+            android:layout_marginLeft="25dp"
+            app:helperText="* requis"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:hint="@string/hint_birthdate">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/birthdate_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/birthdate_text_layout"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            app:helperText="* requis"
+            android:ems="3"
+            android:textSize="16sp"
+            android:text="@string/sex" />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextTextPersonName"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="25dp">
+
+            <RadioButton
+                android:id="@+id/radio_button_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_female" />
+
+            <RadioButton
+                android:id="@+id/radio_button_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_male" />
+
+            <RadioButton
+                android:id="@+id/radio_button_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_other" />
+
+        </RadioGroup>
+
+    <Button
+        android:id="@+id/continue_button"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@+id/radio_group"
+        android:layout_marginHorizontal="35dp"
+        android:text="@string/sign_up_continue"
+        android:textSize="24sp" />
+
+    </LinearLayout>

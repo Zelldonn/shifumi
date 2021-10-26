@@ -3,6 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
+=======
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/drawable/custom_button.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3296296296296296" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2740740740740741" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/drawable/round_button.xml" value="0.35" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_classique.xml" value="0.5" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_game_select.xml" value="0.31798245614035087" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_leader_board.xml" value="0.18" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_lobby.xml" value="0.25" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_multi.xml" value="0.15092592592592594" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_rule.xml" value="0.1" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_shifumi.xml" value="0.22" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_sign_in.xml" value="1.25" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_sign_up.xml" value="0.5" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_solo_game.xml" value="0.15092592592592594" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/activity_twist.xml" value="0.1" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/custom_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/fragment_rule1.xml" value="0.1" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/fragment_rule2.xml" value="0.1" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/fragment_sign_up_one.xml" value="0.33" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/fragment_sign_up_two.xml" value="0.25" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/layout/server_item_horizontal.xml" value="0.33" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/menu/top_app_bar.xml" value="0.33" />
+        <entry key="..\:/Users/strin/AndroidStudioProjects/new/shifumi/app/src/main/res/menu/tp_app_bar.xml" value="0.5" />
+>>>>>>> esiee
         <entry key="..\:/Users/strin/AndroidStudioProjects/shifumi/app/src/main/res/drawable/custom_button.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/strin/AndroidStudioProjects/shifumi/app/src/main/res/drawable/sign_in_button.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/strin/AndroidStudioProjects/shifumi/app/src/main/res/font/font_family.xml" value="0.23541666666666666" />
