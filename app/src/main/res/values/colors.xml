@@ -7,9 +7,5 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< HEAD
     <color name="green">#FF00FF00</color>
-=======
-    <!--<color name="mtrl_textinput_default_box_stroke_color">#fff</color>-->
->>>>>>> 4891f20 (preparing to merge 2)
 </resources>
