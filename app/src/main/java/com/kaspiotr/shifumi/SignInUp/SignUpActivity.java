@@ -1,4 +1,4 @@
-package com.kaspiotr.shifumi;
+package com.kaspiotr.shifumi.SignInUp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +26,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.kaspiotr.shifumi.GameSelectActivity;
+import com.kaspiotr.shifumi.MainActivity;
+import com.kaspiotr.shifumi.R;
+import com.kaspiotr.shifumi.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -90,23 +90,28 @@ public class LeaderBoardActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             int rank = 1, lastScore = -1, score = -1, index = 0 ;
                             boolean exaequo = false;
-                            String lastRank = "";
+                            int displayRank = 1;
+                            String lastRankString = "";
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 exaequo = false;
                                 score = Integer.parseInt(document.getData().get("score").toString());
                                 String name = document.getData().get("name").toString();
-                                if(score == lastScore){
 
-                                    String newRank = lastRank +  " (exaequo)";
-                                    players.set(index-1, newRank);
+                                String info = name + " : "+ score + (score > 1 ? " points | " : " point | ");
+                                if(score == lastScore){
                                     exaequo = true;
-                                    rank--;
+                                    String newRank = lastRankString +  " (exaequo)";
+                                    players.set(index-1, newRank);
+                                    info += displayRank + (displayRank == 1 ?"er" : "e")+ (exaequo ? " (exaequo)" : "");
+                                    //rank--;
+                                }else{
+                                    displayRank = rank;
+                                    rank = index+1;
+                                    info += rank + (rank == 1 ?"er" : "e"); //+ (exaequo ? " (exaequo)" : "");
                                 }
 
-                                String info = name + " : "+ score + (score > 1 ? " points | " : " point | ") + rank + (rank == 1 ?"er" : "e") + (exaequo ? " (exaequo)" : "");
-                                lastRank = info;
+                                lastRankString = info;
                                 players.add(info);
-                                Log.d("SUCCESS GETTING LEADERBOARD", info);
                                 lastScore = score;
                                 rank++;
                                 index++;

@@ -12,33 +12,40 @@
         android:layout_height="56dp"
         android:layout_marginHorizontal="35dp"
         android:layout_marginVertical="25dp"
+        android:backgroundTint="@color/black"
         android:text="@string/sign_in_button"
         android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:backgroundTint="@color/black"/>
+        app:layout_constraintBottom_toTopOf="@+id/sign_up_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <Button
         android:id="@+id/sign_up_button"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginHorizontal="35dp"
-        android:layout_marginTop="25dp"
-        android:textSize="18sp"
+        android:layout_marginBottom="24dp"
         android:text="@string/sign_up_button"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_button"
-        />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="205dp"
+        android:layout_height="199dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

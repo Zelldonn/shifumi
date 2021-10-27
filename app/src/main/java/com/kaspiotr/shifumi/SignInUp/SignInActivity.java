@@ -1,4 +1,4 @@
-package com.kaspiotr.shifumi;
+package com.kaspiotr.shifumi.SignInUp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.kaspiotr.shifumi.GameSelectActivity;
+import com.kaspiotr.shifumi.R;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -53,6 +55,16 @@ public class SignInActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    private void makeToast(String s){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast t = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT);
+                t.show();
+            }
+        });
+    }
+
     private void initComponent(){
 
         email = findViewById(R.id.sign_in_email_input);
@@ -64,7 +76,11 @@ public class SignInActivity extends AppCompatActivity {
 
         sign_in_button = findViewById(R.id.last_sign_in_button);
         sign_in_button.setOnClickListener(v -> {
-            signIn(email.getText().toString().trim(), pswd.getText().toString());
+            if(!email.getText().toString().isEmpty() && !pswd.getText().toString().isEmpty())
+                signIn(email.getText().toString().trim(), pswd.getText().toString());
+            else
+                makeToast("Les champs doivent être remplis !");
+
         });
 
         if(readPreferences()){

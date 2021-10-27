@@ -1,4 +1,4 @@
-package com.kaspiotr.shifumi;
+package com.kaspiotr.shifumi.games;
 
 import androidx.annotation.NonNull;
 
@@ -19,7 +19,7 @@ import com.kaspiotr.FightRule;
 import com.kaspiotr.GameType;
 import com.kaspiotr.Move;
 import com.kaspiotr.MoveMaker;
-import com.kaspiotr.shifumi.games.GameActivity;
+import com.kaspiotr.shifumi.GameSelectActivity;
 
 import java.util.Random;
 
@@ -156,13 +156,14 @@ public class SoloGameActivity extends GameActivity {
             //We win this round
             p1_score ++;
             currentRound++;
-            setGameStatus_text_view("Continuez comme ça !");
+            setGameStatus_text_view("Votre " + m.toString() + " a battu " + aiMove.toString());
+
         }
         else if(fightResult == FightRule.FIGHT_LOOSE){
             //AI wins the round
             currentRound++;
             p2_score++;
-            setGameStatus_text_view("Vous ferai mieux la prochaine fois !");
+            setGameStatus_text_view("Votre " + m.toString() + " s'est fait battre par " + aiMove.toString());
         }
         else{
             //Draw
@@ -206,6 +207,13 @@ public class SoloGameActivity extends GameActivity {
 
     public int getAIScore() {
         return p2_score;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, GameSelectActivity.class);
+        startActivity(intent);
     }
 
     private void updateScore(boolean isWinner){

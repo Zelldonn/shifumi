@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kaspiotr.shifumi">
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"
+        android:screenOrientation="portrait" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,16 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shifumi">
         <activity
-            android:name=".MultiActivity"
-            android:exported="true" />
+            android:name=".games.MultiActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity
-            android:name=".SoloGameActivity"
-            android:exported="true" />
+            android:name=".games.SoloGameActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity
             android:name=".LobbyActivity"
-            android:exported="true" />
-        <activity
-            android:name=".games.TwistActivity"
             android:exported="true" />
         <activity
             android:name=".games.GameActivity"
@@ -31,11 +32,12 @@
             android:name=".GameSelectActivity"
             android:exported="true" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".SignInUp.SignInActivity"
             android:exported="true" />
         <activity
-            android:name=".SignUpActivity"
-            android:exported="true" />
+            android:name=".SignInUp.SignUpActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

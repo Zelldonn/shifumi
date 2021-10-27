@@ -6,7 +6,6 @@ import androidx.appcompat.view.menu.ActionMenuItemView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,8 +15,8 @@ import android.widget.Toast;
 
 import com.kaspiotr.GameType;
 import com.kaspiotr.Move;
-import com.kaspiotr.shifumi.games.GameActivity;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.kaspiotr.shifumi.games.MultiActivity;
 import com.kaspiotr.shifumi.network.ServerConnection;
 import com.kaspiotr.shifumi.network.ServerListener;
 

@@ -1,4 +1,4 @@
-package com.kaspiotr.shifumi;
+package com.kaspiotr.shifumi.SignInUp;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -19,6 +19,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.kaspiotr.shifumi.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

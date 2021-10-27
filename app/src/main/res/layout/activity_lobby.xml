@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:menu="@menu/top_app_bar"
-            app:navigationIcon="@drawable/ic_baseline_menu_24"
             app:title="@string/app_title">
 
         </com.google.android.material.appbar.MaterialToolbar>

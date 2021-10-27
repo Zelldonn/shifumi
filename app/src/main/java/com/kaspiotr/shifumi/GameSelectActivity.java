@@ -9,8 +9,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,14 +20,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.dialog.MaterialDialogs;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kaspiotr.GameType;
+import com.kaspiotr.shifumi.games.SoloGameActivity;
 
 public class GameSelectActivity extends AppCompatActivity {
 
@@ -174,6 +171,7 @@ public class GameSelectActivity extends AppCompatActivity {
 
     private void showTuto(int index, int maxIndex){
         final int[] currentIndex = {index};
+
         int[] images = {R.drawable.a,R.drawable.z,R.drawable.e, R.drawable.r,R.drawable.t,R.drawable.y,R.drawable.u}; // 6 is max
 
         Dialog tuto  = new Dialog(this);

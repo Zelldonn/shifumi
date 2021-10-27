@@ -1,4 +1,4 @@
-package com.kaspiotr.shifumi;
+package com.kaspiotr.shifumi.SignInUp;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.kaspiotr.shifumi.R;
 
 import java.util.ArrayList;
 

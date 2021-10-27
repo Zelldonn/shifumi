@@ -1,6 +1,7 @@
-package com.kaspiotr.shifumi;
+package com.kaspiotr.shifumi.games;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.StrictMode;
@@ -20,6 +21,8 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kaspiotr.GameType;
 import com.kaspiotr.Move;
+import com.kaspiotr.shifumi.GameSelectActivity;
+import com.kaspiotr.shifumi.LobbyActivity;
 import com.kaspiotr.shifumi.games.GameActivity;
 import com.kaspiotr.shifumi.network.ServerConnection;
 import com.kaspiotr.shifumi.network.ServerListener;
@@ -67,6 +70,8 @@ public class MultiActivity extends GameActivity implements ServerListener {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         Bundle extras = getIntent().getExtras();
         if ((extras != null) && (extras.containsKey("GameType"))) {
@@ -175,6 +180,8 @@ public class MultiActivity extends GameActivity implements ServerListener {
         try {
             socket.close();
             Log.i("SOC CLOSED", "closed");
+            Intent intent = new Intent(this, GameSelectActivity.class);
+            startActivity(intent);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -206,7 +213,18 @@ public class MultiActivity extends GameActivity implements ServerListener {
 
     @Override
     public void onError(ServerConnection connection, String errorMessage) {
-        makeToast("server error " + errorMessage);
+        //makeToast("server error " + errorMessage);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+        builder.setTitle("Le serveur a envoyé une erreur...");
+        builder.setMessage(errorMessage);
+        builder.setPositiveButton("OK :(", (dialogInterface, i) -> {
+            Intent intent = new Intent(this, LobbyActivity.class);
+            intent.putExtra("MyName", myName);
+            intent.putExtra("GameType", gameType);
+            startActivity(intent);
+        });
+        builder.setCancelable(false);
+        runOnUiThread(() -> builder.show());
     }
 
     @Override

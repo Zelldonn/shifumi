@@ -1,82 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SignUpFragmentTwo">
+    tools:context=".SignInUp.SignUpFragmentTwo">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_text_layout"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_email"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="25dp"
-        app:helperText="* requis"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_text_input"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pswd_text_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/email_text_layout"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="25dp"
-        app:endIconMode="password_toggle"
-        app:helperText="* requis"
-        android:hint="@string/hint_pswd">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_text_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="25dp"
+                android:hint="@string/hint_email"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pswd_text_input"
-            android:layout_width="match_parent"
-            android:inputType="textPassword"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+                app:helperText="* requis">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pswd_confirm_text_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pswd_text_layout"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="25dp"
-        app:endIconMode="password_toggle"
-        app:helperText="* requis"
-        android:inputType="textPassword"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_text_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        android:hint="@string/hint_pswd_confirm">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pswd_text_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_text_layout"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="25dp"
+                android:hint="@string/hint_pswd"
+                app:endIconMode="password_toggle"
+                app:helperText="* requis">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pswd_confirm_text_input"
-            android:layout_width="match_parent"
-            android:inputType="textPassword"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pswd_text_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pswd_confirm_text_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pswd_text_layout"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="25dp"
+                android:hint="@string/hint_pswd_confirm"
+                android:inputType="textPassword"
+                app:endIconMode="password_toggle"
 
-    <Button
-        android:id="@+id/sign_up_finish_button"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_below="@+id/pswd_confirm_text_layout"
-        android:layout_marginHorizontal="35dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/sign_up_finish"
-        android:textSize="24sp" />
+                app:helperText="* requis">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pswd_confirm_text_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/sign_up_finish_button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@+id/pswd_confirm_text_layout"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/sign_up_finish"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
-</RelativeLayout>
+</LinearLayout>
